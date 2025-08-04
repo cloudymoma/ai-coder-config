@@ -1,0 +1,17 @@
+autodetach on
+
+# Big scrollback
+defscrollback 5000
+scrollback 5000
+
+# No annoying startup message
+startup_message off
+
+hardstatus on
+hardstatus alwayslastline
+hardstatus string '%{= kG}[ %{G}%H %{g}][%= %{= kw}%?%-Lw%?%{r}(%{W}%n*%f%t%?(%u)%?%{r})%{w}%?%+Lw%?%?%= %{g}][%{B} %d/%m %{W}%c %{g}]'
+
+screen -t 'local' 1
+screen -t 'local' 2
+screen -t 'local' 3
+screen -t 'local' 4
