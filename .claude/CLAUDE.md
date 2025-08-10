@@ -24,6 +24,13 @@
 - ask incident-responder agent to identify the issue severity, do online study if required.
 - ask the debugger agent to start investigate then try to fix the issue. update or add more tests if required. always verify the fix.
 
+## for Rust test automation
+- **Embrace Property-Based Testing:** Expand the use of `proptest` to more areas of the test suite, especially for integration and concurrency tests.
+- **Strengthen Concurrency Tests:** Make concurrency tests to be more robust and less prone to non-deterministic failures.
+- **Safety and Security Tests:** Add more targeted tests for memory safety and security, and consider using external tools like Miri.
+- **Benchmark Accuracy:** Benchmark implementations to minimize noise and ensure they are measuring the intended functionality.
+- **Code Organization:** Maintain a clear separation between tests and benchmarks by moving files to their appropriate directories.
+
 ## for Rust project
 
 - cargo build: build the debug mode
