@@ -30,6 +30,7 @@
 - **Safety and Security Tests:** Add more targeted tests for memory safety and security, and consider using external tools like Miri.
 - **Benchmark Accuracy:** Benchmark implementations to minimize noise and ensure they are measuring the intended functionality.
 - **Code Organization:** Maintain a clear separation between tests and benchmarks by moving files to their appropriate directories.
+- **IMPORTANT:** Only run benchmarks and performance tests against --release build.
 
 ## for Rust project
 
