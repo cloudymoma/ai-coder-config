@@ -57,6 +57,7 @@
 
 2. **Research alternatives**:
 
+   - Do an online resarch and study
    - Find 2-3 similar implementations
    - Note different approaches used
 
@@ -70,7 +71,6 @@
    - Different library/framework feature?
    - Different architectural pattern?
    - Remove abstraction instead of adding?
-   - Do an online resarch and study
 
 ## Important Reminders
 
