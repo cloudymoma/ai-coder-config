@@ -68,6 +68,7 @@
    - Is there a simpler approach entirely?
 
 4. **Try different angle**:
+
    - Different library/framework feature?
    - Different architectural pattern?
    - Remove abstraction instead of adding?
