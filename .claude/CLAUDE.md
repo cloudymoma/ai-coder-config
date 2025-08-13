@@ -87,6 +87,8 @@
 - Update plan documentation as you go
 - Learn from existing implementations
 - Stop after 3 failed attempts and reassess
+- Update docs
+- Clean up temporary files
 
 ## Technical Standards
 
