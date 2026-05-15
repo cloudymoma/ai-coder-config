@@ -1,13 +1,91 @@
 # Claude principals must follow
 
-1. always ultrathink for algorithms, performance related issues
-2. always do online research and study
-3. always add required tests
-4. always check the build and all tests in both debug and release mode
-5. always ask a proper agent for each individual sub tasks
-6. always memorize the latest status in project root in local file named CLAUDE.md
-7. always update the readme.md and all related documents once finished
-8. use sequantial-thinking for research, study, debug tasks
+## 1. Think Before Coding
+
+**Don't assume. Don't hide confusion. Surface tradeoffs.**
+
+Before implementing:
+- State your assumptions explicitly. If uncertain, ask.
+- If multiple interpretations exist, present them - don't pick silently.
+- If a simpler approach exists, say so. Push back when warranted.
+- If something is unclear, stop. Name what's confusing. Ask.
+
+## 2. Simplicity First
+
+**Minimum code that solves the problem. Nothing speculative.**
+
+- No features beyond what was asked.
+- No abstractions for single-use code.
+- No "flexibility" or "configurability" that wasn't requested.
+- No error handling for impossible scenarios.
+- If you write 200 lines and it could be 50, rewrite it.
+
+Ask yourself: "Would a senior engineer say this is overcomplicated?" If yes, simplify.
+
+## 3. Surgical Changes
+
+**Touch only what you must. Clean up only your own mess.**
+
+When editing existing code:
+- Don't "improve" adjacent code, comments, or formatting.
+- Don't refactor things that aren't broken.
+- Match existing style, even if you'd do it differently.
+- If you notice unrelated dead code, mention it - don't delete it.
+
+When your changes create orphans:
+- Remove imports/variables/functions that YOUR changes made unused.
+- Don't remove pre-existing dead code unless asked.
+
+The test: Every changed line should trace directly to the user's request.
+
+## 4. Goal-Driven Execution
+
+**Define success criteria. Loop until verified.**
+
+Transform tasks into verifiable goals:
+- "Add validation" → "Write tests for invalid inputs, then make them pass"
+- "Fix the bug" → "Write a test that reproduces it, then make it pass"
+- "Refactor X" → "Ensure tests pass before and after"
+
+For multi-step tasks, state a brief plan:
+```
+1. [Step] → verify: [check]
+2. [Step] → verify: [check]
+3. [Step] → verify: [check]
+```
+Strong success criteria let you loop independently. Weak criteria ("make it work") require constant clarification.
+
+## 5 — Use the model only for judgment calls
+Use me for: classification, drafting, summarization, extraction.
+Do NOT use me for: routing, retries, deterministic transforms.
+If code can answer, code answers.
+
+## 6 — Surface conflicts, don't average them
+If two patterns contradict, pick one (more recent / more tested).
+Explain why. Flag the other for cleanup.
+Don't blend conflicting patterns.
+
+## 7 — Read before you write
+Before adding code, read exports, immediate callers, shared utilities.
+"Looks orthogonal" is dangerous. If unsure why code is structured a way, ask.
+
+## 8 — Tests verify intent, not just behavior
+Tests must encode WHY behavior matters, not just WHAT it does.
+A test that can't fail when business logic changes is wrong.
+
+## 9 — Checkpoint after every significant step
+Summarize what was done, what's verified, what's left.
+Don't continue from a state you can't describe back.
+If you lose track, stop and restate.
+
+## 10 — Match the codebase's conventions, even if you disagree
+Conformance > taste inside the codebase.
+If you genuinely think a convention is harmful, surface it. Don't fork silently.
+
+## 11 — Fail loud
+"Completed" is wrong if anything was skipped silently.
+"Tests pass" is wrong if any were skipped.
+Default to surfacing uncertainty, not hiding it.
 
 ### Core Beliefs
 
@@ -148,22 +226,4 @@ When multiple valid approaches exist, choose based on:
 - Clear test names describing scenario
 - Use existing test utilities/helpers
 - Tests should be deterministic
-
-## for Rust test automation
-- **Embrace Property-Based Testing:** Expand the use of `proptest` to more areas of the test suite, especially for integration and concurrency tests.
-- **Strengthen Concurrency Tests:** Make concurrency tests to be more robust and less prone to non-deterministic failures.
-- **Safety and Security Tests:** Add more targeted tests for memory safety and security, and consider using external tools like Miri.
-- **Benchmark Accuracy:** Benchmark implementations to minimize noise and ensure they are measuring the intended functionality.
-- **Code Organization:** Maintain a clear separation between tests and benchmarks by moving files to their appropriate directories.
-- **IMPORTANT:** Only run benchmarks and performance tests against --release build.
-
-## for Rust project
-
-- cargo build: build the debug mode
-- cargo test --lib: test the debug mode, exclude benchmarks and performance tests
-- cargo build --release: build the release mode
-- cargo test --release: test the release mode, test benchmarks and performance tests in release mode only
-- cargo bench: run benchmarks
-- always run `cargo build && cargo test --lib` to check failures and provide a fix
-- always run `cargo build --release && cargo test --release` to check failures and provide a fix
 
