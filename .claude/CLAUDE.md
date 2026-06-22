@@ -108,66 +108,6 @@ Default to surfacing uncertainty, not hiding it.
 - Handle errors at appropriate level
 - Never silently swallow exceptions
 
-## common workflow
-
-- explore: ask search-specialist for online study and research, read project readme.md and other docs under doc foler. ask business-analyst to address any business requirements.
-- plan: think hard to comiple a clear step-by-step to-dos. consult cloud-architect if it's a cloud native design, ask backend-architect for server side design. write a very detailed plan in file plan-claude.md. for later implementations, start from this plan-claude.md and mark the task status once done.
-- code: ask the proper coding agent for specific programing language, Rust: rust-pro, Go/Golang: golang-pro, Java: java-pro, Python: python-pro, C: C-pro, C++: cpp-pro etc. Always ask performance-engineer for performance review: algorithms, data structures, multi-threads & concurrencies, IOs etc.
-- test: ask test-automator to write automated tests, including unit tests, integration tests and benchmark tests
-- code review: ask our code-reviewer agent for this job, make sure the tasks in plan-claude.md are fully implemented without bugs
-- document: ask our content-marketer to keep all readme, docs up to date with the latest information and examples
-
-## debug, issues
-
-- ask incident-responder agent to identify the issue severity, do online study if required.
-- ask the debugger agent to start investigate then try to fix the issue. update or add more tests if required. always verify the fix.
-
-### When Stuck (After 3 Attempts)
-
-**CRITICAL**: Maximum 3 attempts per issue, then STOP.
-
-1. **Document what failed**:
-
-   - What you tried
-   - Specific error messages
-   - Why you think it failed
-   - update @ERROR.md, add this file exclusion in @.gitignore only if it's not
-
-2. **Research alternatives**:
-
-   - Do an online resarch and study
-   - Find 2-3 similar implementations
-   - Note different approaches used
-
-3. **Question fundamentals**:
-
-   - Is this the right abstraction level?
-   - Can this be split into smaller problems?
-   - Is there a simpler approach entirely?
-
-4. **Try different angle**:
-
-   - Different library/framework feature?
-   - Different architectural pattern?
-   - Remove abstraction instead of adding?
-
-## Important Reminders
-
-**NEVER**:
-
-- Use `--no-verify` to bypass commit hooks
-- Disable tests instead of fixing them
-- Finish a job or task that doesn't compile
-- Make assumptions - verify with existing code
-
-**ALWAYS**:
-
-- Update plan documentation as you go
-- Learn from existing implementations
-- Stop after 3 failed attempts and reassess
-- Update docs
-- Clean up temporary files
-
 ## Technical Standards
 
 ### Architecture Principles
@@ -182,16 +122,6 @@ Default to surfacing uncertainty, not hiding it.
   - Pass all existing tests
   - Include tests for new functionality
   - Follow project formatting/linting
-
-## Decision Framework
-
-When multiple valid approaches exist, choose based on:
-
-1. **Testability** - Can I easily test this?
-2. **Readability** - Will someone understand this in 6 months?
-3. **Consistency** - Does this match project patterns?
-4. **Simplicity** - Is this the simplest solution that works?
-5. **Reversibility** - How hard to change later?
 
 ## Project Integration
 

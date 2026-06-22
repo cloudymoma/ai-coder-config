@@ -2,10 +2,98 @@
   "$schema": "https://json.schemastore.org/claude-code-settings.json",
   "env": {
     "CLAUDE_CODE_USE_VERTEX": "1",
-    "CLOUD_ML_REGION": "us-east5",
+    "CLOUD_ML_REGION": "global",
     "ANTHROPIC_VERTEX_PROJECT_ID": "<placeholder_project_id>",
     "CLAUDE_CODE_MAX_OUTPUT_TOKENS": "32000"
   },
+  "permissions": {
+    "allow": [
+      "mcp__codegraph__codegraph_search",
+      "mcp__codegraph__codegraph_context",
+      "mcp__codegraph__codegraph_callers",
+      "mcp__codegraph__codegraph_callees",
+      "mcp__codegraph__codegraph_impact",
+      "mcp__codegraph__codegraph_node",
+      "mcp__codegraph__codegraph_status"
+    ]
+  },
+  "model": "claude-opus-4-8[1m]",
+  "statusLine": {
+    "type": "command",
+    "command": "bash -c 'plugin_dir=$(ls -d \"${CLAUDE_CONFIG_DIR:-$HOME/.claude}\"/plugins/cache/claude-hud/claude-hud/*/ 2>/dev/null | awk -F/ '\"'\"'{ print $(NF-1) \"\\t\" $(0) }'\"'\"' | sort -t. -k1,1n -k2,2n -k3,3n -k4,4n | tail -1 | cut -f2-); exec \"/usr/local/google/home/binwu/tools/node/bin/node\" \"${plugin_dir}dist/index.js\"'"
+  },
+  "enabledPlugins": {
+    "rust-analyzer-lsp@claude-plugins-official": true,
+    "everything-claude-code@everything-claude-code": true,
+    "frontend-design@claude-plugins-official": true,
+    "superpowers@claude-plugins-official": true,
+    "github@claude-plugins-official": false,
+    "feature-dev@claude-plugins-official": true,
+    "serena@claude-plugins-official": false,
+    "pr-review-toolkit@claude-plugins-official": true,
+    "claude-code-setup@claude-plugins-official": true,
+    "clangd-lsp@claude-plugins-official": true,
+    "firebase@claude-plugins-official": true,
+    "swift-lsp@claude-plugins-official": true,
+    "frontend-design@claude-code-plugins": true,
+    "code-review@claude-code-plugins": true,
+    "code-review@claude-plugins-official": true,
+    "code-simplifier@claude-plugins-official": true,
+    "claude-md-management@claude-plugins-official": true,
+    "supabase@claude-plugins-official": false,
+    "security-guidance@claude-plugins-official": true,
+    "commit-commands@claude-plugins-official": true,
+    "pyright-lsp@claude-plugins-official": true,
+    "typescript-lsp@claude-plugins-official": true,
+    "gopls-lsp@claude-plugins-official": true,
+    "greptile@claude-plugins-official": false,
+    "jdtls-lsp@claude-plugins-official": true,
+    "linear@claude-plugins-official": false,
+    "huggingface-skills@claude-plugins-official": true,
+    "skill-creator@claude-plugins-official": true,
+    "firecrawl@claude-plugins-official": true,
+    "claude-hud@claude-hud": true,
+    "data-agent-kit-starter-pack@data-agent-kit-starter-pack-marketplace": true,
+    "ecc@ecc": true
+  },
+  "extraKnownMarketplaces": {
+    "claude-hud": {
+      "source": {
+        "source": "github",
+        "repo": "jarrodwatts/claude-hud"
+      }
+    },
+    "superpowers-marketplace": {
+      "source": {
+        "source": "github",
+        "repo": "obra/superpowers-marketplace"
+      }
+    },
+    "data-agent-kit-starter-pack-marketplace": {
+      "source": {
+        "source": "git",
+        "url": "https://github.com/gemini-cli-extensions/data-agent-kit-starter-pack.git"
+      }
+    },
+    "ecc": {
+      "source": {
+        "source": "git",
+        "url": "https://github.com/affaan-m/ECC.git"
+      }
+    }
+  },
+  "alwaysThinkingEnabled": true,
+  "pluginConfigs": {
+    "data-agent-kit-starter-pack@data-agent-kit-starter-pack-marketplace": {
+      "options": {
+        "PROJECT_ID": "du-hast-mich",
+        "GCP_REGION": "us-central1",
+        "BIGQUERY_LOCATION": "US"
+      }
+    }
+  },
+  "skipDangerousModePermissionPrompt": true,
+  "editorMode": "vim",
   "feedbackSurveyState": {
     "lastShownTime": 1754061620648
   }
